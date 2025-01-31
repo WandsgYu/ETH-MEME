@@ -159,77 +159,77 @@
           Converted to CNY: Calculating...
         </p>
       </div>
-  
+
       <!-- ETH 利润卡片 -->
       <div class="card profit-card" id="ethProfit">
         <h2>ETH</h2>
         <span class="price" id="ethPrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- PEPE 利润卡片 -->
       <div class="card profit-card" id="pepeProfit">
         <h2>PEPE</h2>
         <span class="price" id="pepePrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- GOAT 利润卡片 -->
       <div class="card profit-card" id="goatProfit">
         <h2>GOAT</h2>
         <span class="price" id="goatPrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- PNUT 利润卡片 -->
       <div class="card profit-card" id="pnutProfit">
         <h2>PNUT</h2>
         <span class="price" id="pnutPrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- MEME 利润卡片 -->
       <div class="card profit-card" id="memeProfit">
         <h2>MEME</h2>
         <span class="price" id="memePrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- POPCAT 利润卡片 -->
       <div class="card profit-card" id="popcatProfit">
         <h2>POPCAT</h2>
         <span class="price" id="popcatPrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- 1000CAT 利润卡片 -->
       <div class="card profit-card" id="cat1000Profit">
         <h2>1000CAT</h2>
         <span class="price" id="cat1000Price">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- 1MBABYDOGE 利润卡片 -->
       <div class="card profit-card" id="babyDoge1mProfit">
         <h2>1MBABYDOGE</h2>
         <span class="price" id="babyDoge1mPrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- HMSTR 利润卡片 -->
       <div class="card profit-card" id="hmstrProfit">
         <h2>HMSTR</h2>
         <span class="price" id="hmstrPrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- PENGU 利润卡片 -->
       <div class="card profit-card" id="penguProfit">
         <h2>PENGU</h2>
         <span class="price" id="penguPrice">Price: $0.00</span>
         <p>Profit: Calculating...</p>
       </div>
-  
+
       <!-- WIF 利润卡片 -->
       <div class="card profit-card" id="wifProfit">
         <h2>WIF</h2>
@@ -237,82 +237,82 @@
         <p>Profit: Calculating...</p>
       </div>
     </div>
-  
+
     <script>
       const exchangeRate = 7.21; // USD to CNY
-  
+
       // 仓位信息
       const ETH = {
         symbol: "ETH",
         usdtValue: 2000,
         entryPrice: 3262,
-        isShort: true,
+        isShort: false,
       };
       const PEPE = {
         symbol: "PEPE",
         usdtValue: 200,
         entryPrice: 0.000013,
-        isShort: false,
+        isShort: true,
       };
       const GOAT = {
         symbol: "GOAT",
         usdtValue: 200,
         entryPrice: 0.1968,
-        isShort: false,
+        isShort: true,
       };
       const PNUT = {
         symbol: "PNUT",
         usdtValue: 200,
         entryPrice: 0.2579,
-        isShort: false,
+        isShort: true,
       };
       const MEME = {
         symbol: "MEME",
         usdtValue: 200,
         entryPrice: 0.007159,
-        isShort: false,
+        isShort: true,
       };
       const POPCAT = {
         symbol: "POPCAT",
         usdtValue: 200,
         entryPrice: 0.3265,
-        isShort: false,
+        isShort: true,
       };
       const CAT1000 = {
         symbol: "1000CAT",
         usdtValue: 200,
         entryPrice: 0.0161,
-        isShort: false,
+        isShort: true,
       };
       const BABYDOGE1M = {
         symbol: "1MBABYDOGE",
         usdtValue: 200,
         entryPrice: 0.0020868,
-        isShort: false,
+        isShort: true,
       };
       const HMSTR = {
         symbol: "HMSTR",
         usdtValue: 200,
         entryPrice: 0.002712,
-        isShort: false,
+        isShort: true,
       };
       const PENGU = {
         symbol: "PENGU",
         usdtValue: 200,
         entryPrice: 0.01445,
-        isShort: false,
+        isShort: true,
       };
       const WIF = {
         symbol: "WIF",
         usdtValue: 200,
         entryPrice: 1.165,
-        isShort: false,
+        isShort: true,
       };
-  
+
       const updateInterval = 500; // ms
       const apiUrlBase =
         "https://api.bitget.com/api/mix/v1/market/ticker?symbol=";
-  
+
       async function fetchPrice(symbol) {
         try {
           const response = await fetch(
@@ -328,10 +328,10 @@
           return null;
         }
       }
-  
+
       async function updateProfit() {
         let totalProfitUsd = 0;
-  
+
         // 更新每个仓位的利润
         const updatePositionProfit = async (position, elementId) => {
           const currentPrice = await fetchPrice(position.symbol);
@@ -341,17 +341,17 @@
               ? (position.entryPrice - currentPrice) * positionSize
               : (currentPrice - position.entryPrice) * positionSize;
             totalProfitUsd += profit;
-  
+
             // 更新价格和利润显示
             document.getElementById(
               `${elementId}Price`
             ).textContent = `Price: $${currentPrice.toFixed(7)}`; // 支持小币种价格显示
-            document.getElementById(
-              `${elementId}Profit`
-            ).querySelector("p").textContent = `Profit: $${profit.toFixed(1)}`;
+            document
+              .getElementById(`${elementId}Profit`)
+              .querySelector("p").textContent = `Profit: $${profit.toFixed(1)}`;
           }
         };
-  
+
         // 更新每个仓位
         await updatePositionProfit(ETH, "eth");
         await updatePositionProfit(PEPE, "pepe");
@@ -364,7 +364,7 @@
         await updatePositionProfit(HMSTR, "hmstr");
         await updatePositionProfit(PENGU, "pengu");
         await updatePositionProfit(WIF, "wif");
-  
+
         // 更新总利润
         const totalProfitCny = totalProfitUsd * exchangeRate;
         document.getElementById(
@@ -373,14 +373,14 @@
         document.getElementById(
           "totalProfitCny"
         ).textContent = `CNY: ¥${totalProfitCny.toFixed(0)}`;
-  
+
         // 更新标题
-        document.title = `¥${totalProfitCny.toFixed(          0        )}`;
+        document.title = `ETH-MEMEM ¥${totalProfitCny.toFixed(0)}`;
       }
-  
+
       // 每 0.5 秒更新一次利润
       setInterval(updateProfit, updateInterval);
-  
+
       // 初始加载
       updateProfit();
     </script>
