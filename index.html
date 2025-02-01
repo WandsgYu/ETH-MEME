@@ -24,24 +24,25 @@
         background: rgba(44, 44, 63, 0.9);
         border-radius: 16px;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        padding: 40px;
+        padding: 24px; /* 减小内边距以适应移动端 */
         width: 90%;
         max-width: 1200px; /* 增大最大宽度 */
-        min-width: 500px;
+        min-width: unset; /* 移除最小宽度限制 */
         height: auto;
         max-height: 90vh;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
-        gap: 32px; /* 增大间距 */
+        gap: 24px; /* 减小间距以适应移动端 */
         backdrop-filter: blur(10px);
+        box-sizing: border-box; /* 确保 padding 不会导致溢出 */
       }
 
       /* 卡片通用样式 */
       .card {
         background: rgba(57, 57, 77, 0.8);
         border-radius: 12px;
-        padding: 32px; /* 增大内边距 */
+        padding: 24px; /* 减小内边距以适应移动端 */
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
@@ -58,13 +59,13 @@
 
       .ratio-card h2 {
         margin: 0;
-        font-size: 48px; /* 增大字体 */
+        font-size: 36px; /* 缩小字体 */
         font-weight: 600;
         color: #ffd700;
       }
 
       .ratio-card span {
-        font-size: 64px; /* 增大字体 */
+        font-size: 48px; /* 缩小字体 */
         font-weight: bold;
         color: #87ceeb;
       }
@@ -75,23 +76,23 @@
       }
 
       .profit-card h2 {
-        margin: 0 0 24px 0; /* 增大间距 */
-        font-size: 40px; /* 增大字体 */
+        margin: 0 0 16px 0; /* 减小间距 */
+        font-size: 32px; /* 缩小字体 */
         font-weight: 600;
         color: #ffd700;
       }
 
       .profit-card .price {
         position: absolute;
-        top: 32px; /* 调整位置 */
-        right: 32px; /* 调整位置 */
-        font-size: 36px; /* 增大字体 */
+        top: 24px; /* 调整位置 */
+        right: 24px; /* 调整位置 */
+        font-size: 28px; /* 缩小字体 */
         color: #87ceeb;
       }
 
       .profit-card p {
         margin: 0;
-        font-size: 36px; /* 增大字体 */
+        font-size: 28px; /* 缩小字体 */
         color: #ffffff;
       }
 
@@ -102,50 +103,57 @@
 
       .total-profit p {
         margin: 0;
-        font-size: 56px; /* 增大字体 */
+        font-size: 40px; /* 缩小字体 */
         font-weight: bold;
         color: #32cd32;
       }
 
       .converted-profit {
-        margin-top: 16px; /* 增大间距 */
-        font-size: 40px; /* 增大字体 */
+        margin-top: 12px; /* 减小间距 */
+        font-size: 28px; /* 缩小字体 */
         color: #87ceeb;
       }
 
       /* 响应式设计 */
       @media (max-width: 600px) {
         .container {
-          padding: 24px;
-          gap: 24px;
+          padding: 16px; /* 进一步减小内边距 */
+          gap: 16px; /* 进一步减小间距 */
+          width: 95%; /* 增加宽度以适应小屏幕 */
+        }
+
+        .card {
+          padding: 16px; /* 进一步减小内边距 */
         }
 
         .ratio-card h2 {
-          font-size: 36px;
+          font-size: 28px; /* 进一步缩小字体 */
         }
 
         .ratio-card span {
-          font-size: 48px;
+          font-size: 36px; /* 进一步缩小字体 */
         }
 
         .profit-card h2 {
-          font-size: 32px;
+          font-size: 24px; /* 进一步缩小字体 */
         }
 
         .profit-card .price {
-          font-size: 28px;
+          font-size: 20px; /* 进一步缩小字体 */
+          top: 16px; /* 调整位置 */
+          right: 16px; /* 调整位置 */
         }
 
         .profit-card p {
-          font-size: 28px;
+          font-size: 20px; /* 进一步缩小字体 */
         }
 
         .total-profit p {
-          font-size: 40px;
+          font-size: 32px; /* 进一步缩小字体 */
         }
 
         .converted-profit {
-          font-size: 28px;
+          font-size: 20px; /* 进一步缩小字体 */
         }
       }
     </style>
